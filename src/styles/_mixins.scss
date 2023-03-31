@@ -1,0 +1,40 @@
+@function responsive-sizing($from: 100, $to: 200, $multiplier: 1) {
+  @return calc((#{rfs-value($from * 1px)} + (#{$to} - #{$from}) * (100vw - #{rfs-value(375px)}) / (1920 - 375)) * #{$multiplier});
+}
+
+@mixin responsive-text($from: 12, $to: 18) {
+  font-size: responsive-sizing($from, $to);
+
+  @media (min-width: 1920px) {
+      font-size: rfs-value($to * 1px);
+  }
+}
+
+@mixin styled-scrollbar($barColor: $primary, $trackColor: $gray-200, $vertical: true) {
+  scrollbar-color: $barColor $trackColor;
+  scrollbar-width: thin;
+  @if $vertical {
+      overflow-x: hidden;
+      overflow-y: auto;
+  } @else {
+      overflow-y: hidden;
+      overflow-x: auto;
+  }
+
+  &::-webkit-scrollbar {
+      @if $vertical {
+          width: rfs-value(7px);
+      } @else {
+          height: rfs-value(7px);
+      }
+  }
+
+  &::-webkit-scrollbar-track {
+      background-color: $trackColor;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background-color: $barColor;
+      border-radius: 4px;
+  }
+}
