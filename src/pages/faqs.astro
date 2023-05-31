@@ -1,0 +1,18 @@
+---
+import faqList from "../data/faqs.json";
+import Layout from "../layouts/Layout.astro";
+import FAQ from "../components/FAQ.astro";
+---
+<Layout title="Frequently Asked Questions">
+    <div class="container">
+        <h1 class="text-center">Frequently Asked Questions</h1>
+
+        <div class="accordion">
+            {faqList.map((data, ix) => <FAQ q={data.q} a={data.a} i={ix}></FAQ>)}
+        </div>
+    </div>
+</Layout>
+
+<script>
+    import {Collapse} from "bootstrap/js/dist/collapse";
+</script>

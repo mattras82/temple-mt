@@ -1,0 +1,63 @@
+---
+import { Picture, Image } from "@astrojs/image/components";
+import training from "../images/training.jpg";
+import texture from "../images/temple-texture.png";
+---
+
+<div
+  class="hero d-flex flex-row justify-content-center align-items-center position-relative"
+>
+  <Picture
+    src={training}
+    alt=""
+    widths={[500, 800, 1920]}
+    sizes="(max-width: 500px) 100vw, (max-width: 800px) 100vw, 1920px"
+    formats={["jpg", "webp"]}
+    class="hero__image position-absolute end-0 top-0"
+  />
+  <Image
+    src={texture}
+    alt=""
+    class="hero__texture position-absolute bottom-0 width-100"
+  />
+  <div class="hero__content position-relative">
+    <div class="container">
+      <h1 class="hero__title text-white text-md-center">
+        Are you ready to <span class="text-gradient d-md-block"
+          >Build Your Temple?</span
+        >
+      </h1>
+      <div class="text-center">
+        <a href="#temple-mt" class="btn btn-primary btn-lg">Yes, Coach</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="sass">
+  .hero
+    overflow: hidden
+    height: 100svh
+    background-color: #000
+
+    &__image
+      z-index: 0
+      min-width: 100%
+      opacity: 0.375
+      width: auto
+      height: 100%
+      object-fit: cover
+      object-position: right center
+
+    &__texture
+      z-index: 0
+      opacity: 0.85
+      left: 50%
+      transform: translateX(-50%)
+
+    &__content
+      z-index: 2
+
+    &__title
+      font-size: clamp(3.25rem, 7vw, 5rem)
+</style>

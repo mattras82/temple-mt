@@ -1,0 +1,32 @@
+---
+export interface Props {
+  q: string;
+  a: string;
+  i: number;
+}
+
+const { q, a, i } = Astro.props;
+---
+
+<div class="accordion-item">
+  <h2 class="accordion-header" id={"faq-question-"+i}>
+    <button
+      class="accordion-button"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target={"#faq-body-"+i}
+      aria-expanded="true"
+      aria-controls={"faq-body-"+i}
+    >
+      {q}
+    </button>
+  </h2>
+  <div
+    id={"faq-body-"+i}
+    class="accordion-collapse collapse"
+    aria-labelledby={"faq-question-"+i}
+  >
+    <div class="accordion-body" set:html={a}>
+    </div>
+  </div>
+</div>
